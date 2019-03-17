@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <title>Psychic Game (Basic)</title>
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h1>The Psychic Game</h1>
+
+    <!-- Computer randomly guesses a letter of the alphabet -->
+
+
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col" style="font-size: 25px;">
+            <center>Guess what Letter I'm thinking of &nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;-----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Press any
+              alphabet letter on the keyboard)</center>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+          <th scope="row">Computer Guess</th>
+          <td id="col-compGuess" style="color: red;"><span id="computer-guess"></span></td>
+          </tr>
+
+        <th scope="row">Your Selection</th>
+        <td id="col-guess" style="color: red;"><span id="user-guess"></span></td>
+        </tr>
+        <!-- Track the number of times the user has guessed correctly -->
+        <tr>
+          <th scope="row">Wins:</th>
+          <td id="col-win">0</td>
+
+        </tr>
+        <!-- Track the number of times the user has guessed incorrectly -->
+
+        <tr>
+          <th scope="row">Losses:</th>
+          <td id="col-loss">0</td>
+        </tr>
+
+        <!-- Track the number of times the user has guesses left (10 total) -->
+
+        <tr>
+          <th scope="row">Guesses Left:</th>
+          <td id="col-guessLeft">10</td>
+        </tr>
+
+        <!-- Show the letters that have been used -->
+
+        <tr>
+          <th scope="
+            row">Guesses so far:</th>
+          <td id="col-guessSoFar"><span id="user-guessThus"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Use this to test JS prior to moving to game.js file -->
+
+
+    <script type="text/javascript">
+      /* Declaring letters and other variables */
+
+      var computerLetter = ["a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z"
+      ];
+
+      var wins = 0,
+        losses = 0,
+        guessesNotUsed = 10,
+        guessThus = [],
+        divYourSelection = document.getElementById("user-guess"),
+        divComputerGuess = document.getElementById("col-compGuess"),
+        divWins = document.getElementById("col-win"),
+        divLosses = document.getElementById("col-loss"),
+        divGuessesLeft = document.getElementById("col-guessLeft"),
+        divGuessesSoFar = document.getElementById("col-guessSoFar");
+        
+
+        // if (computerGuess.indexOf(userGuess) > -1) {
+        // // Randomly chooses a choice from the options array. This is the Computer's guess.
+        // var computerGuess =
+        //   computerChoices[Math.floor(Math.random() * computerChoices.length)];
+        // }
+
+
+      // Captures keyboard input. //
+
+      // if (computerLetter.indexOf(letterGuessed) > -1) {
+      //   // Randomly chooses a choice from the options array. This is the Computer's guess.
+      //   var computerGuess =
+      //   computerLetter[Math.floor(Math.random() * computerLetter.length)];
+        
+      
+      
+      document.onkeyup = function (event) {
+       
+        // Determines which key was pressed by te user.
+        var letterGuessed = event.key.toLowerCase();
+
+        if (letterGuessed != null) {
+          console.log("Honk Honkhhksaddididldldl")
+        }  
+        
+        function userGuessFunction() {
+          guessThus.push(letterGuessed);
+          document.getElementById("user-guess").innerHTML = guessThus;
+        console.log(guessThus + "   " + letterGuessed)
+        }
+        userGuessFunction(divYourSelection.textContent = letterGuessed); 
+
+       if (computerLetter.indexOf(letterGuessed) > -1) {
+
+        var computerGuess =
+        computerLetter[Math.floor(Math.random() * computerLetter.length)]
+        console.log(computerGuess);
+        if
+        (          computerGuess = letterGuessed) { 
+        wins++
+        } else      
+        {losses++
+        }
+          
+       }
+
+       
+     
+        
+
+
+
+    
+        /* Write to HTML */
+        divYourSelection.textContent = letterGuessed;
+        divGuessesSoFar.textContent = letterGuessed;
+        divWins.textContent = wins;
+        divLosses.textContent = losses;
+        // divGuessesSoFar.push = user-guessThus;
+        // divGuessesLeft.textContent = guessesNotUsed;        //   divWins.textContent = col;
+        // divComputerGuess.textContent= computer-guess;
+     } 
+    </script>
+
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
