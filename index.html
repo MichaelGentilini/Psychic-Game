@@ -7,13 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Waiting+for+the+Sunrise" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css">
   <title>Psychic Game (Basic)</title>
 </head>
 
 <body>
-  <div class="container mt-5">
-    <h1 id="header">The Psychic Game</h1>
+  <div class="container">
+    <h1>The Psychic Game</h1>
 
     <!-- Computer randomly guesses a letter of the alphabet -->
 
@@ -21,17 +22,16 @@
     <table class="table">
       <thead class="thead-light">
         <tr>
-          <th scope="col" style="font-size: 25px;">
-            <center>Guess what Letter I'm thinking of &nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;-----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Press any
-              alphabet letter on the keyboard)</center>
+          <th scope="col">
+            <h4>Guess what Letter I'm thinking of:</h4>
+            <p>Press any alphabet letter on the keyboard</p>
           </th>
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         <th scope="row">Computer Guess</th>
-        <td id="col-compGuess" style="color: red;"><span id="computer-guess"></span></td>
+        <td id="col-compGuess" style="color: rgb(0, 245, 20); font-size: 30px;"><span id="computer-guess"></span></td>
         </tr>
 
         <th scope="row">Your Selection</th>
@@ -58,17 +58,23 @@
         </tr>
 
         <!-- Show the letters that have been used -->
-
         <tr>
           <th scope="
             row">Guesses so far:</th>
-          <td id="col-guessSoFar">Null</td>
+          <td id="col-guessSoFar">~~</td>
         </tr>
       </tbody>
     </table>
-
-
   </div>
+
+  <div class="container alert alert-success" id="you-win" role="alert">
+    Great guess!
+  </div>
+
+  <div class="container alert alert-warning" id="wrong-key" role="alert">
+Please select the letters a - z only!  </div>
+
+<p></p>
 
   <script src="assets/javascript/game.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
@@ -77,3 +83,5 @@
 </body>
 
 </html>
+
+// youWin.style.display == "";
