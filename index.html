@@ -15,19 +15,17 @@
 <body>
   <div class="container">
     <h1>The Psychic Game</h1>
-
+    <h5>I'm thinking of a letter between "e" and "z"</h5>
+    <p> Press any letter on the keyboard</p>
     <!-- Computer randomly guesses a letter of the alphabet -->
-
-
     <table class="table">
-      <thead class="thead-light">
-        <tr>
+      <thead class="thead">
+        <!-- <tr>
           <th scope="col">
-            <h4>Guess what Letter I'm thinking of:</h4>
-            <p>Press any alphabet letter on the keyboard</p>
           </th>
-          <th scope="col"></th>
-        </tr>
+          <td scope="row"></td>
+
+        </tr> -->
       </thead>
       <tbody>
         <th scope="row">Computer Guess</th>
@@ -71,17 +69,21 @@
     Great guess!
   </div>
 
-  <div class="container alert alert-warning" id="wrong-key" role="alert">
-Please select the letters a - z only!  </div>
+  <div class="alert alert-info" id="new-letter" role="alert">
+    <strong>Hey, you've used that one before!
+  </div>
 
-<p></p>
+  <div class="container alert alert-warning" id="wrong-key" role="alert">
+    Please select the letters a - z only! </div>
+
+  <p></p>
 
   <script src="assets/javascript/game.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/dojo/1.14.1/dojo/dojo.js"></script>
+
 </body>
 
 </html>
-
-// youWin.style.display == "";
