@@ -31,8 +31,8 @@ var computerLetter = [
 
 var wins = 0,
   losses = 0,
-  guessesNotUsed = 10,
   guessThus = [],
+  guessesNotUsed = 10,
   noDuplicates = [],
   divYourSelection = document.getElementById("user-guess"),
   divComputerGuess = document.getElementById("computer-guess"),
@@ -48,24 +48,29 @@ var computerGuess =
   computerLetter[Math.floor(Math.random() * computerLetter.length)];
 console.log(computerGuess);
 
-document.onkeyup = function(event) {
+document.onkeyup = function (event) {
   // Determines which key was pressed by te user.
   var letterGuessed = event.key.toLowerCase();
 
   // user Guess Function
   function userGuessFunction() {
-    guessThus.push(letterGuessed);
-  }
 
-  // Remove duplicates from guesses
-  var noDuplicates = [];
-  dojo.forEach(guessThus, function(item, i) {
-    if (dojo.indexOf(noDuplicates, item) == -1) {
-      noDuplicates.push(item);
+    if (computerLetter.indexOf(letterGuessed) != -1) {
+      // console.log(letterinPlay);
+      guessThus.push(letterGuessed);
     }
-  });
-  document.getElementById("col-guessSoFar").textContent = noDuplicates;
-  console.log(console.log(noDuplicates));
+  }
+  // Use this Function to Remove Duplicates
+  function removeDuplicates(arr) {
+    var uniqueArray = []
+    for (var i = 0; i < arr.length; i++) {
+      if (uniqueArray.indexOf(arr[i]) == -1) {
+        uniqueArray.push(arr[i])
+      }
+    }
+    return uniqueArray
+  }
+  console.log(removeDuplicates(guessThus))
 
   // Track Wins
 
@@ -78,18 +83,44 @@ document.onkeyup = function(event) {
     youWinAlert.style.visibility = "hidden";
   }
 
-  // Track losses
+  // Track available guesses
 
-  if (letterGuessed !== computerGuess && guessesNotUsed >= 0) {
+  if (letterGuessed !== computerGuess && (removeDuplicates(guessThus).length) >= 0) {
     guessesNotUsed--;
   }
 
+  // if (letterGuessed == computerGuess && (removeDuplicates(guessThus).length) !== guessThus.length) {
+  //   guessesNotUsed++;
+  // }
+
+  console.log(computerGuess);
+  console.log(letterGuessed);
+  console.log("*********")
+  console.log((removeDuplicates(guessThus).length));
+  console.log(guessThus.length);
+  console.log("-- -- -- -- -- -- -- -- -- -- -- - =")
+
+  // Track losses
+
+  console.log(guessesNotUsed);
   // Deduct guessesNotUsed  with wrong answers
   if (guessesNotUsed == 0) {
     losses++;
     guessThus = [];
     guessesNotUsed = 10;
+    youWinAlert.style.visibility = "visible";
+  } else {
+    youWinAlert.style.visibility = "hidden";
   }
+
+
+  // console.log("guessThus: " + guessThus.length);
+  // console.log("(removeDuplicates: " + (removeDuplicates(guessThus).length));
+
+  // if ((removeDuplicates(guessThus).length) == guessThus.length) {
+  //   guessesNotUsed++
+  // }
+
 
   // Only allow letters to be guessed
 
@@ -119,8 +150,6 @@ document.onkeyup = function(event) {
   divWins.textContent = wins;
   divLosses.textContent = losses;
   divGuessesLeft.textContent = guessesNotUsed;
+  divGuessesSoFar.textContent = (removeDuplicates(guessThus));
   userGuessFunction((divYourSelection.textContent = letterGuessed));
-  // divGuessesSoFar.push = user-guessThus;
-  //   divWins.textContent = col;
-  // divComputerGuess.textContent= computer-guess;
 };
