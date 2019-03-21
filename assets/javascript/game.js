@@ -56,7 +56,7 @@ document.onkeyup = function (event) {
   function userGuessFunction() {
 
     if (computerLetter.indexOf(letterGuessed) != -1) {
-      // console.log(letterinPlay);
+
       guessThus.push(letterGuessed);
     }
   }
@@ -70,8 +70,6 @@ document.onkeyup = function (event) {
     }
     return uniqueArray
   }
-  console.log(removeDuplicates(guessThus))
-
   // Track Wins
 
   if (letterGuessed == computerGuess) {
@@ -79,55 +77,42 @@ document.onkeyup = function (event) {
     youWinAlert.style.visibility = "visible";
     guessThus = [];
     guessesNotUsed = 10;
+    newLetter.style.visibility = "hidden";
+
   } else {
     youWinAlert.style.visibility = "hidden";
   }
 
   // Track available guesses
 
-  if (letterGuessed !== computerGuess && (removeDuplicates(guessThus).length) >= 0) {
+  if (letterGuessed !== computerGuess && (removeDuplicates(guessThus).length) >= 0 && guessThus.indexOf(letterGuessed) == -1) {
     guessesNotUsed--;
+    newLetter.style.visibility = "hidden";
+
+  } else if (letterGuessed !== computerGuess && (removeDuplicates(guessThus).length) >= 0 && guessThus.indexOf(letterGuessed) != -1) {
+    newLetter.style.visibility = "visible";
   }
+  // Track lossesas
 
-  // if (letterGuessed == computerGuess && (removeDuplicates(guessThus).length) !== guessThus.length) {
-  //   guessesNotUsed++;
-  // }
-
-  console.log(computerGuess);
-  console.log(letterGuessed);
-  console.log("*********")
-  console.log((removeDuplicates(guessThus).length));
-  console.log(guessThus.length);
-  console.log("-- -- -- -- -- -- -- -- -- -- -- - =")
-
-  // Track losses
-
-  console.log(guessesNotUsed);
-  // Deduct guessesNotUsed  with wrong answers
   if (guessesNotUsed == 0) {
     losses++;
     guessThus = [];
     guessesNotUsed = 10;
-    youWinAlert.style.visibility = "visible";
-  } else {
-    youWinAlert.style.visibility = "hidden";
   }
-
 
   // console.log("guessThus: " + guessThus.length);
   // console.log("(removeDuplicates: " + (removeDuplicates(guessThus).length));
 
   // if ((removeDuplicates(guessThus).length) == guessThus.length) {
-  //   guessesNotUsed++
+  //   guessesNotUsed++FGF
   // }
 
 
   // Only allow letters to be guessed
 
   if (computerLetter.indexOf(letterGuessed) == -1) {
-    // alert("Please select the letters a - z only!");
-    // wrongKey.style.display = "normal";
     wrongKey.style.visibility = "visible";
+    // #col-guess.style.backgroundcolo
   } else {
     wrongKey.style.visibility = "hidden";
   }

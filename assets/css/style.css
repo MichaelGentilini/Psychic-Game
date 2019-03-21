@@ -31,5 +31,45 @@ p {
   text-align: center;
   visibility: hidden;
   width: 70%;
-  /* display: none; */
+
+}
+
+#head-row {
+  color: red;
+  background: #ffffff;
+  text-align: center;
+}
+
+
+
+
+#col-compGuess {
+  color: red;
+  background: #ffffff;
+  text-align: center;
+}
+
+#col-guess {
+  color: red;
+  text-align: center;
+}
+
+#col-guessLeft {
+  background: #ffffff;
+  text-align: center;
+}
+
+#col-win {
+  background: #ffffff;
+  text-align: center;
+}
+
+#col-loss {
+  background: #ffffff;
+  text-align: center;
+}
+
+#col-guessSoFar {
+  background: #ffffff;
+  text-align: center;
 }
