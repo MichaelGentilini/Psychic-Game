@@ -1,6 +1,6 @@
 # Psychic-Game
 
-In this game, a random letter will be completed by the computer.
+In this game, a random letter will be guessed by the computer.
 
 The user must guess by pressing letter keys on the keyboard.
 
