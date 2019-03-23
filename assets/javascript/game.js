@@ -42,71 +42,76 @@ var wins = 0,
   divGuessesSoFar = document.getElementById("col-guessSoFar"),
   wrongKey = document.getElementById("wrong-key"),
   youWinAlert = document.getElementById("you-win"),
-  newLetter = document.getElementById("new-letter");
+  newLetter = document.getElementById("new-letter"),
+  firstGuess =
+    computerLetter[Math.floor(Math.random() * computerLetter.length)];
 
-var computerGuess =
-  computerLetter[Math.floor(Math.random() * computerLetter.length)];
-console.log(computerGuess);
+console.log(firstGuess); //Not this
 
-document.onkeyup = function (event) {
+function computerGuess() {
+  var createdLetter =
+    computerLetter[Math.floor(Math.random() * computerLetter.length)];
+  return createdLetter;
+}
+console.log(computerGuess()); //Not this
+
+document.onkeyup = function(event) {
   // Determines which key was pressed by te user.
   var letterGuessed = event.key.toLowerCase();
 
   // user Guess Function
   function userGuessFunction() {
-
     if (computerLetter.indexOf(letterGuessed) != -1) {
-
       guessThus.push(letterGuessed);
     }
   }
   // Use this Function to Remove Duplicates
   function removeDuplicates(arr) {
-    var uniqueArray = []
+    var uniqueArray = [];
     for (var i = 0; i < arr.length; i++) {
       if (uniqueArray.indexOf(arr[i]) == -1) {
-        uniqueArray.push(arr[i])
+        uniqueArray.push(arr[i]);
       }
     }
-    return uniqueArray
+    return uniqueArray;
   }
   // Track Wins
 
-  if (letterGuessed == computerGuess) {
+  if (letterGuessed == computerGuess()) {
     wins++;
     youWinAlert.style.visibility = "visible";
     guessThus = [];
     guessesNotUsed = 10;
     newLetter.style.visibility = "hidden";
-
+    // computerGuess();
   } else {
     youWinAlert.style.visibility = "hidden";
   }
 
   // Track available guesses
 
-  if (letterGuessed !== computerGuess && (removeDuplicates(guessThus).length) >= 0 && guessThus.indexOf(letterGuessed) == -1) {
+  if (
+    letterGuessed !== computerGuess &&
+    removeDuplicates(guessThus).length >= 0 &&
+    guessThus.indexOf(letterGuessed) == -1
+  ) {
     guessesNotUsed--;
     newLetter.style.visibility = "hidden";
-
-  } else if (letterGuessed !== computerGuess && (removeDuplicates(guessThus).length) >= 0 && guessThus.indexOf(letterGuessed) != -1) {
+  } else if (
+    letterGuessed !== computerGuess &&
+    removeDuplicates(guessThus).length >= 0 &&
+    guessThus.indexOf(letterGuessed) != -1
+  ) {
     newLetter.style.visibility = "visible";
   }
-  // Track lossesas
+  // Track losses
 
   if (guessesNotUsed == 0) {
     losses++;
     guessThus = [];
     guessesNotUsed = 10;
+    // computerGuess();
   }
-
-  // console.log("guessThus: " + guessThus.length);
-  // console.log("(removeDuplicates: " + (removeDuplicates(guessThus).length));
-
-  // if ((removeDuplicates(guessThus).length) == guessThus.length) {
-  //   guessesNotUsed++FGF
-  // }
-
 
   // Only allow letters to be guessed
 
@@ -117,24 +122,12 @@ document.onkeyup = function (event) {
     wrongKey.style.visibility = "hidden";
   }
 
-  // do not allow for repetitive keystrokes
-
-  // if (guessThus.indexOf(letterGuessed) >= -1) {
-  //   newLetter.style.visibility = "visible";
-  // } else {
-  //   newLetter.style.visibility = "hidden";
-  // }
-
-  // function lettersOnly(letterGuessed) {
-  //   var lettersOnly = /[^a-z^]/gi;
-  // }
-
   /* Write to HTML */
   divYourSelection.textContent = letterGuessed;
-  divComputerGuess.textContent = computerGuess;
+  // divComputerGuess.textContent = computerGuess();?
   divWins.textContent = wins;
   divLosses.textContent = losses;
   divGuessesLeft.textContent = guessesNotUsed;
-  divGuessesSoFar.textContent = (removeDuplicates(guessThus));
+  divGuessesSoFar.textContent = removeDuplicates(guessThus);
   userGuessFunction((divYourSelection.textContent = letterGuessed));
 };
