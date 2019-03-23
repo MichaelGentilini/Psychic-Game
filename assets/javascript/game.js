@@ -35,7 +35,6 @@ var wins = 0,
   guessesNotUsed = 10,
   noDuplicates = [],
   divYourSelection = document.getElementById("user-guess"),
-  divComputerGuess = document.getElementById("computer-guess"),
   divWins = document.getElementById("col-win"),
   divLosses = document.getElementById("col-loss"),
   divGuessesLeft = document.getElementById("col-guessLeft"),
@@ -124,7 +123,6 @@ document.onkeyup = function(event) {
 
   /* Write to HTML */
   divYourSelection.textContent = letterGuessed;
-  // divComputerGuess.textContent = computerGuess();?
   divWins.textContent = wins;
   divLosses.textContent = losses;
   divGuessesLeft.textContent = guessesNotUsed;
